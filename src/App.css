@@ -1,0 +1,128 @@
+@import url('./css/style.css');
+
+* {
+  --outline: 1px solid red;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.2s ease-out;
+}
+
+#root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 4px; 
+  height: 4px; 
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.gapped {
+  gap: 15px;
+}
+
+.padded {
+  padding: 15px;
+}
+
+.radius-left {
+  border-radius: 15px 0 0 15px;
+}
+
+.radius-right {
+  border-radius: 0 15px 15px 0;
+}
+
+.radius-top {
+  border-radius: 15px 15px 0 0;
+}
+
+.radius-bottom {
+  border-radius: 0 0 15px 15px;
+}
+
+.radius-full {
+  border-radius: 15px;
+}
+
+.transparent {
+  background-color: transparent !important;
+}
+
+.title {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.circular {
+  border-radius: 50%;
+}
+
+.center-child {
+  justify-content: center;
+  align-items: center;
+}
+
+.center-full {
+  justify-self: center;
+  align-self: center;
+}
+
+.center-x {
+  justify-self: center;
+}
+
+.center-y {
+  align-self: center;
+}
+
+.bottom {
+  align-self: flex-end;
+}
+
+.no-border {
+  border: none;
+}
+
+.scrollable-y {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.screen-overlay {
+  width: 100vw;
+  height: 100vh;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.separator-x {
+  width: 100%;
+  height: 4px;
+  margin: 30px 0;
+  border-radius: 15px;
+}
+
+.separator-y {
+  width: 4px;
+  height: 100%;
+  margin: 0 30px;
+  border-radius: 15px;
+}
+
+.no-display {
+  display: none;
+}
