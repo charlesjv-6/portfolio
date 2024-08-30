@@ -41,7 +41,6 @@ const trashTalkOnWin = [
 ];
 
 function TicTacToe() {
-    //const { speak } = useSpeechSynthesis();
     const emptyGrid = ["", "", "", "", "", "", "", "", ""];
     const [gridData, setGridData] = useState(emptyGrid);
     const [turn, setTurn] = useState("✕");

@@ -12,6 +12,15 @@ String.prototype.formatToTimeOrDate = function (format) {
     return date.toLocaleString('en-US', options);
 };
 
+String.prototype.formatDate = function() {
+    const date = new Date(this);
+
+    const options = { year: 'numeric', month: 'long', day: '2-digit' };
+    const formattedDate = date.toLocaleDateString(undefined, options);
+
+    return formattedDate;
+};
+
 String.prototype.trimWithEllipsis = function(maxLength) {
     if (this.length > maxLength) {
         return this.substring(0, maxLength) + '...';

@@ -15,7 +15,7 @@ export const GlobalStyles = createGlobalStyle`
         background-color: ${({ theme }) => theme.backgroundSecondary};
         color: ${({ theme }) => theme.text};
     }
-    main, .question, .table-title  {
+    main, .question, .table-title, .card  {
         background-color: ${({ theme }) => theme.backgroundSecondary};
         color: ${({ theme }) => theme.text};
     }
@@ -29,7 +29,11 @@ export const GlobalStyles = createGlobalStyle`
     a {
         color: ${({ theme }) => theme.text};
     }
-    .selected, .tools-table {
+    .website-info a, .card a, .card-title {
+        background-color: ${({ theme }) => theme.text};
+        color: ${({ theme }) => theme.backgroundPrimary};
+    }
+    .selected, .tools-table, .profile-image {
         background-color: ${({ theme }) => theme.backgroundPrimary} !important;
     }
     .input-container {
@@ -56,6 +60,9 @@ export const GlobalStyles = createGlobalStyle`
     }
     svg {
         fill: ${({ theme }) => theme.text};
+    }
+    .card svg {
+        fill: ${({ theme }) => theme.backgroundPrimary};
     }
     ::-webkit-scrollbar-track {
         background: ${({ theme }) => theme.backgroundSecondary};

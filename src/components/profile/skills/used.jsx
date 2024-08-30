@@ -1,6 +1,6 @@
 import React from "react";
 
-function UsedTable({ data }) {
+function UsedTable({ data, info }) {
     const renderData = () => {
         const chunkSize = 5;
         const chunks = [];

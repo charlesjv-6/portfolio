@@ -1,5 +1,23 @@
 import React from "react";
 import FAQ from "../faq";
+import UsedTable from "./skills/used";
+
+const techStack = [
+    "Microsoft Azure",
+    "Git",
+    "VS Code",
+    "Visual Studio",
+    "SQL Server",
+    "IIS",
+    "BrowserStack",
+    "NodeJS",
+    "ReactJS",
+    "ASP.NET Core",
+    "Postman",
+    "Swagger",
+    "PhpMyAdmin",
+    "cPanel",
+];
 
 function Skill() {
     return (
@@ -11,6 +29,8 @@ function Skill() {
                 <FAQ question={"database management systems"} preset={2}/>
                 <FAQ question={"version control"} preset={3}/>
             </div>
+            <div className="separator-x"/>
+            <UsedTable data={techStack}/>
         </div>
     );
 }

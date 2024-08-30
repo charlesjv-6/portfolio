@@ -11,6 +11,7 @@ function Home() {
             <QuickContact />
             <div className="separator-x"/>
             <TicTacToe />
+            <div className="separator-x"/>
             <Skill />
         </section>
     );
