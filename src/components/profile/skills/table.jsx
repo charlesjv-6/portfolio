@@ -12,9 +12,9 @@ function Table({ data }) {
                 </tr>
             </thead>
             <tbody>
-                { data && data.map(r => {
+                { data && data.map((r, i) => {
                     return (
-                        <tr>
+                        <tr key={i}>
                             <td>{r.language}</td>
                             <td>{r.framework}</td>
                             <td>{r.level}</td>

@@ -1,8 +1,8 @@
 import React from "react";
 import Main from "../components/profile/main";
 import Skill from "../components/profile/skills";
-import ColoringGame from "../components/coloring-game";
 import QuickContact from "../components/profile/contact/quick-contact";
+import TicTacToe from "../components/tic-tac-toe";
 
 function Home() {
     return (
@@ -10,6 +10,7 @@ function Home() {
             <Main />
             <QuickContact />
             <div className="separator-x"/>
+            <TicTacToe />
             <Skill />
         </section>
     );
