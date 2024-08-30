@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
         --chat-received: ${({ theme }) => theme.chatReceived};
     }
     body {
-        background-color: ${({ theme }) => theme.background};
+        background-color: ${({ theme }) => theme.backgroundSecondary};
         color: ${({ theme }) => theme.text};
     }
     main, .question, .table-title  {
@@ -39,7 +39,7 @@ export const GlobalStyles = createGlobalStyle`
         background-color: ${({ theme }) => theme.backgroundAccent};
         color: ${({ theme }) => theme.text};
     }
-    .screen-overlay {
+    .screen-overlay, .answer {
         background-color: ${({ theme }) => theme.background};
     }
     .line, .separator-x, .separator-y {
@@ -50,6 +50,9 @@ export const GlobalStyles = createGlobalStyle`
     }
     .profile-image, #coloringCanvas {
         border: 4px solid ${({ theme }) => theme.chatSent};  
+    }
+    th {
+        border-bottom: 2px solid ${({ theme }) => theme.chatSent};  
     }
     svg {
         fill: ${({ theme }) => theme.text};

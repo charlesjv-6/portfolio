@@ -1,15 +1,104 @@
+import { useSpeechSynthesis } from 'react-speech-kit';
 const { useState, useEffect } = require("react");
 
+const trashTalkOnLoss = [
+    "You’re really terrible at this!",
+    "Is this your idea of a challenge?",
+    "I’ve seen better moves from a toddler!",
+    "Maybe stick to something simpler!",
+    "Are you even trying?",
+    "Pathetic! Is this all you’ve got?",
+    "I didn’t realize I was playing with a rookie!",
+    "You just made losing look easy!",
+    "You might want to quit while you’re behind!",
+    "I could beat you with my eyes closed!"
+];
+
+const trashTalkOnDraw = [
+    "A draw? Really? How pathetic!",
+    "Looks like neither of us could win, how disappointing!",
+    "Congrats on your mediocrity!",
+    "Even in a draw, you still manage to be a letdown!",
+    "A draw? That’s the best you’ve got?",
+    "Well, that was a waste of time!",
+    "A tie is just another way to say ‘not good enough’!",
+    "Draws are for losers who can’t win!",
+    "If a draw was a victory, you’d be a champion!",
+    "A draw? More like a total failure!"
+];
+
+const trashTalkOnWin = [
+    "Looks like you actually pulled off a win. Impressive… barely.",
+    "You won? Must have been a fluke!",
+    "Wow, you won! Hope you’re not too proud of that.",
+    "Congrats, you managed to beat me. Don’t get used to it!",
+    "Winning once doesn’t make you a champ!",
+    "You got lucky this time. Enjoy it while it lasts!",
+    "A win? I hope you’re not getting too cocky.",
+    "Great job, but don’t expect this to happen again!",
+    "You won, but it hardly feels like a victory.",
+    "Well, you won. But don’t let it go to your head!"
+];
+
 function TicTacToe() {
+    //const { speak } = useSpeechSynthesis();
     const emptyGrid = ["", "", "", "", "", "", "", "", ""];
     const [gridData, setGridData] = useState(emptyGrid);
     const [turn, setTurn] = useState("✕");
     const [winner, setWinner] = useState(null);
+    let currentUtterance = null;
+    let selectedVoice = null;
 
     const [score, setScore] = useState(() => {
         const savedScore = localStorage.getItem("score");
         return savedScore ? JSON.parse(savedScore) : { you: 0, me: 0 };
     });
+
+    function getRandomMessage(arr) {
+        const randomIndex = Math.floor(Math.random() * arr.length);
+        return arr[randomIndex];
+    }
+
+    function displayAndSpeak(option) {
+        let text;
+        switch(option) {
+            case "win":
+                text = getRandomMessage(trashTalkOnWin);
+                break;
+            case "lose":
+                text = getRandomMessage(trashTalkOnLoss);
+                break;
+            default:
+                text = getRandomMessage(trashTalkOnDraw);
+                break;
+        }
+    
+        speak(text);
+        return text;
+    }
+
+    function loadVoices() {
+        const voices = speechSynthesis.getVoices();
+        selectedVoice = voices.find(voice => voice.name === "Microsoft Liam Online (Natural) - English (Canada)");
+    }
+    loadVoices();
+
+    function speak(text) {
+        if (currentUtterance) {
+            speechSynthesis.cancel();
+        }
+    
+        currentUtterance = new SpeechSynthesisUtterance(text);
+        currentUtterance.voice = selectedVoice;
+        currentUtterance.onend = () => {
+            currentUtterance = null;
+        };
+    
+        if (speechSynthesis.speaking) {
+            speechSynthesis.cancel();
+        }
+        speechSynthesis.speak(currentUtterance);
+    }
 
     useEffect(() => {
         const result = checkWinner(gridData);
@@ -153,7 +242,7 @@ function TicTacToe() {
                     <span>{score.me} [○ ME]</span>
                 </div>
                 <div className="turn flex-row center-child gapped">
-                    {!isDraw() ? (turn === "○" ? (winner === "✕" ? "YOU WON!" : "MY TURN") : (winner === "○" ? "YOU LOST" : "YOUR TURN")) : "DRAW"}
+                    {!isDraw() ? (turn === "○" ? (winner === "✕" ? displayAndSpeak("win") : "MY TURN") : (winner === "○" ? displayAndSpeak("lose") : "YOUR TURN")) : displayAndSpeak("draw")}
                 </div>
             </header>
             <div className="box-grid padded">

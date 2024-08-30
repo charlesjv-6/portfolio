@@ -3,7 +3,7 @@ import FAQ from "../faq";
 
 function Skill() {
     return (
-        <div className="padded">
+        <div className="skills padded">
             <h2>S K I L L S</h2>
             <div className="skills-container">
                 <FAQ question={"programming"} preset={0}/>
