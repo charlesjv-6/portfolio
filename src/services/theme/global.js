@@ -29,7 +29,7 @@ export const GlobalStyles = createGlobalStyle`
     a {
         color: ${({ theme }) => theme.text};
     }
-    .website-info a, .card a, .card-title {
+    .website-info a, .card a, .card-title, .code-view button {
         background-color: ${({ theme }) => theme.text};
         color: ${({ theme }) => theme.backgroundPrimary};
     }
@@ -61,7 +61,7 @@ export const GlobalStyles = createGlobalStyle`
     svg {
         fill: ${({ theme }) => theme.text};
     }
-    .card svg {
+    .card svg, .code-view svg {
         fill: ${({ theme }) => theme.backgroundPrimary};
     }
     ::-webkit-scrollbar-track {
@@ -71,5 +71,31 @@ export const GlobalStyles = createGlobalStyle`
     ::-webkit-scrollbar-thumb {
         background: ${({ theme }) => theme.chatSent};
         border-radius: 10px;
+    }
+    .code-view > pre {
+        background-color: ${({ theme }) => theme.codeBackground};
+        color: ${({ theme }) => theme.text};
+    }
+    .code-view header {
+        background-color: ${({ theme }) => theme.text};
+        color: ${({ theme }) => theme.codeBackground};
+    }
+    .reserved {
+        color: ${({ theme }) => theme.reserved} !important;
+    }
+    .reserved-2 {
+        color: ${({ theme }) => theme.reserved2} !important;
+    }
+    .reserved-3 {
+        color: ${({ theme }) => theme.reserved3} !important;
+    }
+    .reserved-4 {
+        color: ${({ theme }) => theme.reserved4} !important;
+    }
+    .reserved-5 {
+        color: ${({ theme }) => theme.reserved5} !important;
+    }
+    .reserved-6 {
+        color: ${({ theme }) => theme.reserved6} !important;
     }
 `;

@@ -124,12 +124,12 @@ function FAQ({ question, answer, preset }) {
                 <Table data={versionControlData}/>
             ];
             return (
-                <div className={`answer radius-bottom padded ${status === "open" ? "" : "no-display"}`}>
+                <div key={question} className={`answer radius-bottom padded ${status === "open" ? "" : "no-display"}`}>
                     {presets[preset]}
                 </div>
             );
         } else {
-            return <div className={`answer radius-bottom padded ${status === "open" ? "" : "no-display"}`}>
+            return <div key={question} className={`answer radius-bottom padded ${status === "open" ? "" : "no-display"}`}>
                 {answer && answer.toUpperCase()}
             </div>
         }
@@ -144,7 +144,7 @@ function FAQ({ question, answer, preset }) {
 
         return (
             <div className="icons flex-row gapped">
-                {presets[preset].map(i => i)}
+                {presets[preset].map((p, i) => <span key={i} >{p}</span>)}
             </div>
         );
     };

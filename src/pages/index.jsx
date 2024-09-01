@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SidePanel from "../components/side-panel";
 import Home from "../layouts/home";
 import Project from "../layouts/project";
+import Journal from "../layouts/journal";
 
 function Index({ themeToggler }) {
   return (
@@ -13,6 +14,7 @@ function Index({ themeToggler }) {
           <Routes>
             <Route index path="/" element={<Home/>} />
             <Route path="/project" element={<Project/>} />
+            <Route path="/journal" element={<Journal/>} />
           </Routes>
         </BrowserRouter>
       </div>
